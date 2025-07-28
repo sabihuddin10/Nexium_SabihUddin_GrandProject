@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
-import { LoginSignMagic } from "../../lib/SupaBase/api/customers/loginSignMagic";
+import { LoginSignMagic } from "../../lib/SupaBase/api/cars/loginSignMagic";
 interface LoginFormProps {
   onClose: () => void;
 }
