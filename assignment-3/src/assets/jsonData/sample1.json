@@ -1,0 +1,38 @@
+ {
+  "title": "Chicken Biryani",
+  "description": "A popular South Asian mixed rice dish made with basmati rice, spices, and marinated chicken",
+  "ingredients": [
+    "basmati rice",
+    "chicken",
+    "yogurt",
+    "ginger paste",
+    "garlic paste",
+    "cumin powder",
+    "coriander powder",
+    "turmeric",
+    "red chili powder",
+    "salt",
+    "lemon juice",
+    "oil",
+    "onion",
+    "ghee",
+    "mint leaves",
+    "cilantro"
+  ],
+  "tools": [
+    "large pan",
+    "bowl",
+    "spoon",
+    "pot or Dutch oven"
+  ],
+  "steps": [
+    "Marinate 500 grams of chicken pieces in a mixture of 1 cup yogurt, 2 tablespoons ginger paste, 2 tablespoons garlic paste, 1 teaspoon cumin powder, 1 teaspoon coriander powder, 1/2 teaspoon turmeric, 1/2 teaspoon red chili powder, salt, and 2 tablespoons lemon juice for at least 30 minutes",
+    "Heat 2 tablespoons of oil in a large pan over medium heat. Add 1 large onion, thinly sliced, and cook until golden brown",
+    "Add 2 cloves of garlic, minced, and 1 teaspoon of ginger paste, and sauté for 1 minute",
+    "Add the marinated chicken and cook until the chicken is cooked through",
+    "In a separate pan, heat 2 cups of basmati rice with 4 cups of water, 1 tablespoon ghee or oil, and salt to taste. Bring to a boil, then reduce the heat to low, cover, and simmer until the rice is 70% cooked",
+    "Layer the cooked chicken, rice, and fried onions in a large pot or Dutch oven. Add 1/4 cup of chopped fresh mint leaves and 1/4 cup of chopped fresh cilantro",
+    "Cover the pot and cook over low heat for 10–15 minutes, allowing the flavors to meld together",
+    "Serve the Biryani hot, garnished with additional mint leaves and cilantro if desired"
+  ]
+}
