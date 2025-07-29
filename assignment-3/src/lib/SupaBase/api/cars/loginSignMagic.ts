@@ -2,7 +2,7 @@ import { supabase } from "../../supabaseClient";
 
 export async function LoginSignMagic(email: string): Promise<{ success: boolean; message: string }> {
   // Step 1: Send magic link
-   const redirectUrl = `${window.location.origin}/`
+   const redirectUrl = import.meta.env.VITE_SITE_URL;
   const { error: otpError } = await supabase.auth.signInWithOtp({
     email,
     options: {
