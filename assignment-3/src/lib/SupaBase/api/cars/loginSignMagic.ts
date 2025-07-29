@@ -17,23 +17,34 @@ export async function LoginSignMagic(email: string): Promise<{ success: boolean;
 
   console.log("📧 Magic link sent to:", email);
 
-  // Step 2: Check if customer already exists
-  const { data: existingCustomer, error: checkError } = await supabase
-    .from("customers")
-    .select("email")
-    .eq("email", email)
-    .maybeSingle(); // ✅ avoids 406 if no match
+  // Step 2: Wait briefly and then fetch auth user by email
+  await new Promise((resolve) => setTimeout(resolve, 1500)); // Wait 1.5s to let auth create user
 
-  if (checkError && checkError.code !== "PGRST116") {
-    console.error("❌ Failed to check existing customer:", checkError.message);
-    return { success: true, message: "Magic link sent, but customer check failed." };
+  const { data: userLookup, error: userError } = await supabase
+    .from("users") // Use the auth.users table via RPC (requires RLS open or public view)
+    .select("id")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (userError || !userLookup?.id) {
+    console.error("❌ Could not fetch user ID from auth.users");
+    return { success: true, message: "Magic link sent, but couldn't sync user ID." };
   }
 
+  const authUserId = userLookup.id;
+
+  // Step 3: Check if customer already exists
+  const { data: existingCustomer } = await supabase
+    .from("customers")
+    .select("id")
+    .eq("id", authUserId)
+    .maybeSingle();
+
   if (!existingCustomer) {
-    // Step 3: Insert if not found
     const { error: insertError } = await supabase.from("customers").insert({
+      id: authUserId, // 👈 set same ID
       email,
-      name: null, // ✅ now allowed in schema
+      name: null,
     });
 
     if (insertError) {
@@ -41,9 +52,9 @@ export async function LoginSignMagic(email: string): Promise<{ success: boolean;
       return { success: true, message: "Magic link sent, but failed to register customer." };
     }
 
-    console.log("✅ New customer inserted:", email);
+    console.log("✅ New customer inserted with ID:", authUserId);
   } else {
-    console.log("ℹ️ Customer already exists:", email);
+    console.log("ℹ️ Customer already exists with ID:", authUserId);
   }
 
   return { success: true, message: "Check your email for the magic login link!" };
