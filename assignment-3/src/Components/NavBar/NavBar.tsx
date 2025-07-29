@@ -7,9 +7,9 @@ type NavItem = {
 }
 
 const navLinks: NavItem[] = [
-  { name: "Customers", href: "/" },
-  { name: "Cars", href: "/" },
-  { name: "Full", href: "/" },
+  { name: "Home", href: "/" },
+  { name: "About", href: "/" },
+  { name: "Services", href: "/" },
   { name: "Contact", href: "/" },
 ]
 
